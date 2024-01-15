@@ -1,0 +1,215 @@
+A list of all Super Mario 64 animations!
+
+~ = Unused
+_______________________________
+# - Hex - Action
+_______________________________
+0 - 0 -	slow ledge get up
+1 - 1 -	hard backward knockback
+2 - 2 -	backward air knockback
+3 - 3 -	death on back
+4 - 4 -	backflip
+5 - 5 -	climbing pole
+6 - 6 -	short pole grab
+7 - 7 -	long pole grab (1/2)
+8 - 8 -	long pole grab (2/2)
+9 - 9 -	handstand
+10  A 	handstand jump
+11  B	start handstand
+12  C	stop handstand
+13  D	holding pole
+14  E	standing motionless
+15  F	skidding
+16  10	stop skidding
+17  11	fast long jump landing
+18  12	slow long jump landing
+19  13	fast long jump
+20  14	slow long jump
+21  15	cannon shot / vertical wind
+22  16	decelerating [with an object]
+23  17	walking [with an object]
+24  18	slow walking [with an object]
+25  19	start shivering
+26  1A	stop shivering
+27  1B	shivering
+28  1C	climb down onto ledge
+29  1D	waving
+30  1E	Peach cutscene - holding hat
+31  1F	Peach cutscene - looking forward
+32  20	Peach cutscene - looking around
+33  21	Peach cutscene - looking up
+34  22	Peach cutscene - taking off hat
+35  23	Peach cutscene - walking to castle
+36  24	Peach cutscene - running to castle
+37  25	grand star cutscene - twirling
+38  26	grand star cutscene - jumping
+39  27	Peach cutscene - victory sign dance
+40  28	lava boost landing
+41  29	lava/fire boost
+42  2A	flying
+43  2B	riding owl
+44  2C	hard forward knockback
+45  2D	thrown / forward air knockback
+46  2E	death on stomach
+47  2F	suffocation
+48  30	coughing
+49  31	key exit
+50  32	standing death
+51  33	ledge grab
+52  34	quick ledge get up
+53  35	start hanging
+54  36	putting on hat
+55  37	star exit with hat
+56  38	~putting on hat fast
+57  39	head stuck in ground
+58  3A	ground pound landing
+59  3B	start ground pound from flying
+60  3C	start ground pound from freefall
+61  3D	ground pound
+62  3E	butt stuck in ground
+63  3F	standing [with an object]
+64  40	jump landing [with an object]
+65  41	jump [with an object]
+66  42	freefall landing [with an object]
+67  43	freefall [with an object]
+68  44	sitting to freefall [with an object]
+69  45	air/ground sitting [with an object]
+70  46	stop sitting [with an object]
+71  47	shell riding on ground
+72  48	walking
+73  49	~forward flip
+74  4A	shell riding in air
+75  4B	double jump landing
+76  4C	double jump (2/2)
+77  4D	standard jump
+78  4E	standard jump landing
+79  4F	air kick
+80  50	double jump (1/2)
+81  51	~start forward spinning
+82  52	air throw
+83  53	slide kick freefall
+84  54	~bend knees while riding shell
+85  55	feet stuck in ground
+86  56	freefall
+87  57	freefall landing
+88  58	start being grabbed/heaved
+89  59	picking up a heavy object
+90  5A	stop sliding/diving
+91  5B	start flying from cannon shot
+92  5C	swinging - right arm
+93  5D	swinging - left arm
+94  5E	star exit without hat
+95  5F	pulling door
+96  60	pushing door
+97  61	unlocking key door
+98  62	~start crying
+99  63	~crying
+100 64	~stop crying
+101 65	ground throw
+102 66	ground kick
+103 67	first punch (1/2)
+104 68	second punch (1/2)
+105 69	first punch (2/2)
+106 6A	second punch (2/2)
+107 6B	picking up an object
+108 6C	pushing
+109 6D	start riding shell
+110 6E	placing down an object
+111 6F	forward spinning
+112 70	backward spinning
+113 71	breakdance
+114 72	running
+115 73	~running 2
+116 74	soft backward knockback
+117 75	soft forward knockback
+118 76	quicksand dying breath
+119 77	in quicksand
+120 78	wading through quicksand
+121 79	electrocution
+122 7A	shocked
+123 7B	medium backward knockback
+124 7C	medium forward knockback
+125 7D	standing [with a heavy object]
+126 7E	standing against wall
+127 7F	sidestepping left
+128 80	sidestepping right
+129 81	start sleeping - standing
+130 82	start sleeping - scratching
+131 83	start sleeping - yawning
+132 84	start sleeping - sitting
+133 85	sleeping - sitting
+134 86	sleeping - start lying down
+135 87	sleeping - lying down
+136 88	air/ground dive
+137 89	sliding
+138 8A	ground bonk
+139 8B	stop sliding [with an object]
+140 8C	slide kick
+141 8D	stop slide kicking
+142 8E	~sitting motionless
+143 8F	stop sitting
+144 90	sitting to freefall
+145 91	air/ground sitting
+146 92	tiptoeing
+147 93	twirl landing
+148 94	twirling
+149 95	start twirling
+150 96	stop crouching
+151 97	start crouching
+152 98	crouching
+153 99	crawling
+154 9A	stop crawling
+155 9B	start crawling
+156 9C	unlocking door (1/2)
+157 9D	unlocking door (2/2)
+158 9E	water backward knockback
+159 9F	swim [with an object] (1/2)
+160 A0	swim [with an object] (2/2)
+161 A1	flutterkick [with an object]
+162 A2	water action end [with an object]
+163 A3	water grabbing end [with an object]
+164 A4	in water [with an object]
+165 A5	drowning - holding mouth
+166 A6	drowning - falling forward
+167 A7	water death
+168 A8	water forward knockback
+169 A9	water to freefall
+170 AA	swim (1/2)
+171 AB	swim (2/2)
+172 AC	flutterkick
+173 AD	water action end
+174 AE	picking up an object in water
+175 AF	water grab (2/2)
+176 B0	water grab (1/2)
+177 B1	water throw
+178 B2	in water
+179 B3	star dance in water
+180 B4	stop star dance in water
+181 B5	picking up Bowser
+182 B6	swinging Bowser
+183 B7	releasing Bowser
+184 B8	holding Bowser
+185 B9	heavy throw
+186 BA	panting
+187 BB	walking [with a heavy object]
+188 BC	turning around (1/2)
+189 BD	turning around (2/2)
+190 BE	sideflip landing
+191 BF	sideflip
+192 C0	landing celebration
+193 C1	triple jump
+194 C2	first person view
+195 C3	standing - turning head left
+196 C4	standing - turning head right
+197 C5	standing - turning head to center
+198 C6	hanging - left arm
+199 C7	hanging - right arm
+200 C8	waking up from sitting
+201 C9	waking up from lying
+202 CA	pre-tiptoeing
+203 CB	pole jump / wall kick
+204 CC	pre-wallkick
+205 CD	star dance on ground
+206 CE	stop star dance on ground
+207 CF	forward spinning to horizontal
+208 D0	flying triple jump
