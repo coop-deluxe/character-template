@@ -83,6 +83,19 @@ Type in ``GEO_ASM(0, geo_mario_set_player_colors),`` and ``GEO_ASM(LAYER_TRANSPA
 **Step 3:** Delete any old .bin file and open the game to create a new! And you're set!
 
 ## Common Error Fixes!
+Errors, they stink, but we've been through this before!
+
+**Vertex Groups Issue**
+
+You've seen this alot, huh?
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/cf3674a3-0fec-436a-b8c0-2d9eb0ad7868)
+
+This just means one of the meshes is assigned to two or more bones, OR if the mesh is assigned to two different armatures. To fix this, join the main armature's mesh and *right click*. Then hover *Parent* and *Clear Parent and Keep transformation*.
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/0d4d96be-eb45-42a1-9613-36f649b1cf66)
+
+That should do it!
 
 **Metal Head Bug**
 This is a Fast64 bug that occurs due to an update that changed how the materials work.
@@ -99,6 +112,7 @@ Only the custom head ``GEO_BRANCH`` with a clear name should be deleted.
 **Floating Small/Lower Tall Character Bug**
 
 If your character is floating or phasing through the floor, you can always edit the height of the character.
+Open *geo.inc.c* file and edit the xyz section below.
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/1a6058de-9398-42fe-bda1-60f5b07c5235)
 
@@ -106,7 +120,44 @@ You MUST do this to only the first one of these AND do the same for the other Ca
 
 **Model's placement is... off**
 
+Ever wonder why your model always was away from the shadow and you don't know how to fix it? Here's how!
 
+* Select the mesh and set the 3D Cursor to the ROOT / Body bone.
+* Then select origin to 3D Cursor to make the mesh point towards the root/body bone.
+* Do the same for the armature!
 
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/8dca5754-e42d-4ccf-9288-8a0a284a835e)
 
+**Metal Texture screws up Romhacks**
+Due to how the new Metal Texture works, it messes up with the romhack textures. to fix this, open *model.inc.c* file, then replace the code in the screenshot entirely with this:
 
+Original Code (At the VERY bottom!):
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/6cbc5b32-91cf-4f5d-b971-1df2a5f515c8)
+
+New Code:
+
+    Gfx mario_material_revert_render_settings[] = {
+      gsDPPipeSync(),
+      gsSPSetGeometryMode(G_LIGHTING),
+      gsSPClearGeometryMode(G_TEXTURE_GEN),
+      gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
+      gsSPTexture(65535, 65535, 0, 0, 0),
+      gsDPSetEnvColor(255, 255, 255, 255),
+      gsDPSetAlphaCompare(G_AC_NONE),
+
+      gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, 0),
+      gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+      gsDPLoadBlock(7, 0, 0, 1023, 256),
+      gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
+      gsDPSetTileSize(0, 0, 0, 124, 124),
+
+      gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, 0),
+      gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 0, 256, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+      gsDPLoadBlock(6, 0, 0, 1023, 256),
+      gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 256, 1, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
+      gsDPSetTileSize(1, 0, 0, 124, 124),
+
+      gsSPEndDisplayList(),
+    };
+
+### Good luck!
