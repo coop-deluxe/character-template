@@ -85,7 +85,7 @@ Type in ``GEO_ASM(0, geo_mario_set_player_colors),`` and ``GEO_ASM(LAYER_TRANSPA
 ## Common Error Fixes!
 Errors, they stink, but we've been through this before!
 
-**Vertex Groups Issue**
+### Vertex Groups Issue
 
 You've seen this alot, huh?
 
@@ -97,7 +97,7 @@ This just means one of the meshes is assigned to two or more bones, OR if the me
 
 That should do it!
 
-**Metal Head Bug**
+### Metal Head Bug
 This is a Fast64 bug that occurs due to an update that changed how the materials work.
 
 There are four *constants* for Cap Switches in order: 
@@ -109,7 +109,7 @@ Only the custom head ``GEO_BRANCH`` with a clear name should be deleted.
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/53a14448-3fe6-49d1-9f1b-fc50fc80950c)
 
-**Floating Small/Lower Tall Character Bug**
+### Floating Small/Lower Tall Character Bug
 
 If your character is floating or phasing through the floor, you can always edit the height of the character.
 Open *geo.inc.c* file and edit the xyz section below.
@@ -118,8 +118,7 @@ Open *geo.inc.c* file and edit the xyz section below.
 
 You MUST do this to only the first one of these AND do the same for the other Cap Switches.
 
-**Model's placement is... off**
-
+### Model's placement is... off..
 Ever wonder why your model always was away from the shadow and you don't know how to fix it? Here's how!
 
 * Select the mesh and set the 3D Cursor to the ROOT / Body bone.
@@ -128,7 +127,7 @@ Ever wonder why your model always was away from the shadow and you don't know ho
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/8dca5754-e42d-4ccf-9288-8a0a284a835e)
 
-**Metal Texture screws up Romhacks**
+### Metal Texture screws up Romhacks
 Due to how the new Metal Texture works, it messes up with the romhack textures. to fix this, open *model.inc.c* file, then replace the code in the screenshot entirely with this:
 
 Original Code (At the VERY bottom!):
