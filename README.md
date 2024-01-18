@@ -1,4 +1,4 @@
-![image](https://github.com/coop-deluxe/character-template/assets/140215214/4fa7a0ac-43df-42bb-9cae-c340a97f38da)# Character Template for Coop Deluxe
+# Character Template for Coop Deluxe
 This is a character template that uses the original Fast64 blend file and expands upon it to take advantage of the less limitations the PC Port has. Not only does it renames the offsets with appropiate names, but also contains multiple heads for the unused eyestates.
 
 *Fast64-Coop is required for this .Blend file. You can download it from here:* https://github.com/Agent-11/fast64-coop
