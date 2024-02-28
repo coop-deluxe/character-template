@@ -159,4 +159,75 @@ New Code:
       gsSPEndDisplayList(),
     };
 
+## Miscellaneous
+Want some tips based on what we learned? No problem!
+
+### Disable Tilt Torso
+Y'know that BETA Mario running animation with how his torso never tilts?
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/40d05041-4118-40bf-83ad-567b3d1ea925)
+
+Well.. you can do something like that!
+Head to *geo.inc.c* file of your model and locate it in search for ``GEO_ASM(0, geo_mario_tilt_torso),``, it should be located at the last constant of the file, then delete it! That's it!
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/1532d461-03ee-454c-8a8e-3c9ea1425030)
+
+### Editing Aramature Anatomy
+Is your character's body too different from Mario? Do this!
+
+**Step 1:** Make sure you select the armature in *Object Mode*.
+
+![1](https://github.com/coop-deluxe/character-template/assets/140215214/0dc495a7-2da0-4100-8169-2fdcb54c03ac)
+
+**Step 2:** Head to the pose settings and select both layers.
+
+![2](https://github.com/coop-deluxe/character-template/assets/140215214/26300bae-4633-4e85-8953-0b9b1de6283c)
+
+**Step 3:** Set to *Edit Mode* and multi-select that one bone. Remember each offset bone has other bones attached to it. Perspective WILL help you with this!
+
+![5](https://github.com/coop-deluxe/character-template/assets/140215214/0d3c396d-6bef-4f49-b820-0810c2a84438)
+![6](https://github.com/coop-deluxe/character-template/assets/140215214/b37485ee-3231-4d65-a9a3-b1d08b3a5bad)
+
+### Porting model to new Armature.
+Is the main armature being a pain to you due to many errors but you're too scared to redo everything? TRY THIS!
+
+**Step 1:** Click the meshes and *right-click*. Then hover to *Clear Parent* and select *Clear Parent and Keep Transformation*. Then, head to the *Modifiers* section and delete the Armature modifier. Do this to ALL of your meshes!
+
+![2](https://github.com/coop-deluxe/character-template/assets/140215214/50d135e3-1fc8-47e2-9b65-9b53d11bae89)
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/3d1d3f30-07c5-4c27-b064-3c3aab8849bd)
+
+NOTE: As long as you have these vertex groups left alone, you SHOULD be fine once you head to the new armature.
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/ee28ca3b-608a-4287-93f4-b40370f0715a)
+
+**Step 2:** Multi-select all the unparented meshes and head to SELECT tab. Click Invert and delete everything BUT the meshes. Once the meshes are left alone, copy and paste them to the new unbroken armature.
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/263afd8b-b748-46f8-9e84-066b4b18edc6)
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/582682e2-2fe4-456d-bb3b-a1008b558c75)
+
+**Step 3:** Make sure the meshes on the new template have the parent cleared AND Armature modifer removed. Mult-select the mesh with the cleared parent and the removed modifier be deleted. Note: I'd recommend removing the vertex groups from those meshes as a safe keeping. But that's up to you.
+
+**Step 4:** Paste the old meshes on the new armature, then just parent them to the appropiate armature. That's pretty much it!
+
+![4](https://github.com/coop-deluxe/character-template/assets/140215214/34d83929-fb24-48b1-a0a1-38694be7867e)
+
+### Shared Lighter/Darker Colors.
+Does your character have two colors that one is darker than the other but you have no way of setting up recolorability? Here's how!
+
+Make a material with the same exact color as the other. Set the 2nd Material to *Decal*. Set set up a transparent color of your choice, either white or black.
+
+![Showcase](https://github.com/coop-deluxe/character-template/assets/140215214/9ffec240-c159-4fca-8fdd-608417fe86fa)
+
+Here's the result! They're BOTH in CAP color!
+
+![image (9)](https://github.com/coop-deluxe/character-template/assets/140215214/2ead971e-edf7-40ea-b422-4900e572a7a9)
+
+You can download the textures here:
+
+![25% White](https://github.com/coop-deluxe/character-template/assets/140215214/ea4e74a0-2262-4f82-a17e-1608f4e8da58)
+![Half Transparent White](https://github.com/coop-deluxe/character-template/assets/140215214/a43b0bea-2dda-4e8e-a912-9162f18604ed)
+![Transparent Black Half](https://github.com/coop-deluxe/character-template/assets/140215214/9382603a-8e51-412e-9de8-1adc8b0b88c6)
+![Transparent Black](https://github.com/coop-deluxe/character-template/assets/140215214/45cc4cad-a6f2-4557-b84f-f0915722c024)
+
+
 ### Good luck!
