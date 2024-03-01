@@ -23,7 +23,7 @@ In order to rig the body parts, you must have the mesh traingulated.
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/6be71c7f-94b7-498b-81b0-9ae359667df5)
 
-**Step 4:** Set up your EyeStates by finding the *Eye Material Switch* bone! You can also replace the *Eye Switch* with an *Extra Head Armature*. 
+**Step 4:** Set up your EyeStates by finding the *Eye State Switch* bone! You can also replace the *Eye Switch* with an *Extra Head Armature*. 
 
 Eyestates are as followed:
 * Switch Option 1: Half Closed Eyes
@@ -42,7 +42,7 @@ And you're done! You are now ready to export the model!
 ## How to Export!
 You must have all the mesh parented and assigned vertex groups for the export to happen.
 
-**Step 1:** Hover to the right side on the toolbar and look into *GeoLayout Exporter*. Then select the directory. Either you place the files under *"sm64coopdx/Mods/character_mod/actors"* or *DynOS/Packs*. However if you prefer exporting to DynOS Packs, you must have it under *mario* and *mario_geo*. You can always rename the .bin file after it is build.
+**Step 1:** Hover to the right side on the toolbar and look into *GeoLayout Exporter*. Then select the directory. Either you place the files under *"sm64coopdx/mods/character_mod/actors"* or *dynos/packs*. However if you prefer exporting to DynOS Packs, you must have it under *mario* and *mario_geo*. You can always rename the .bin file after it is build.
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/bd156f5a-0788-4257-92d1-f7f4851a478c)
 
@@ -72,7 +72,7 @@ The game consists of seven body parts to recolor:
 
 **Step 1:** Open the *geo.inc.c* file and scroll to the bottom. 
 
-Type in ``GEO_ASM(0, geo_mario_set_player_colors),`` and ``GEO_ASM(LAYER_TRANSPARENT + 3, geo_mario_set_player_colors),`` in between. These will activate the coloring for both applyed shaded material and transparent material. You *MUST* have both in at the same time!
+Type in ``GEO_ASM(0, geo_mario_set_player_colors),`` and ``GEO_ASM(LAYER_TRANSPARENT + 3, geo_mario_set_player_colors),`` in between. These will activate the coloring for both applied shaded material and transparent material. You *MUST* have both in at the same time!
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/3c99c5d1-3178-4386-8aa4-952005380a4b)
 
@@ -109,7 +109,7 @@ Wanna add your own animations to your character? Here's how!
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/ca8fc6d1-553b-45c0-932d-417edb61276b)
 
 You can repeat the process with the rest of the limbs! 
-NOTE: Animations C3, C4, and C5 are all three-parts of the idle animation. In order for the custom animation to not break, you must have each animation to start from from to frame 30. You can also set up the manual range of the frames.
+NOTE: Animations C3, C4, and C5 are all three-parts of the idle animation. In order for the custom animation to not break, you must have each animation to start from frame 0 to frame 29. You can also set up the manual range of the frames.
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/72ea7b96-0499-4a32-9230-312e745ee4f5)
 
@@ -207,9 +207,18 @@ You've seen this alot, huh?
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/cf3674a3-0fec-436a-b8c0-2d9eb0ad7868)
 
-This just means one of the meshes is assigned to two or more bones, OR if the mesh is assigned to two different armatures. To fix this, join the main armature's mesh and *right click*. Then hover *Parent* and *Clear Parent and Keep transformation*.
+This means one of three things:
+* The meshes is assigned to two or more bones. 
+* The mesh is assigned to two different armatures.
+* There is an ungrouped vertex or vertices in one of the meshes.
+
+To fix the first 2 issues, join the main armature's mesh and *right click*, then hover over *Parent* and click on *Clear Parent and Keep transformation*.
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/0d4d96be-eb45-42a1-9613-36f649b1cf66)
+
+To fix the thrid issue, firstly select all used meshes and go into *Edit Mode*, then switch to vertex select and click on the *Select* tab, then hover over *Select All by Trait* and click on *Ungrouped Vertices*, it should select all ungrouped vertices, after that you go into the meshes with ungrouped vertices, lastly select the ungrouped vertex or vertices and assign them to the appropriate vertex groups.
+
+![image](https://github.com/coop-deluxe/character-template/assets/88401287/878e427a-28d6-41fd-b0f3-a1467c3c70f7)
 
 That should do it!
 
@@ -279,7 +288,7 @@ New Code:
 Want some tips based on what we learned? No problem!
 
 ### Disable Tilt Torso
-Y'know that BETA Mario running animation with how his torso never tilts?
+Y'know how in BETA Mario's running animation his torso never tilts?
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/40d05041-4118-40bf-83ad-567b3d1ea925)
 
@@ -328,13 +337,13 @@ NOTE: As long as you have these vertex groups left alone, you SHOULD be fine onc
 ![4](https://github.com/coop-deluxe/character-template/assets/140215214/34d83929-fb24-48b1-a0a1-38694be7867e)
 
 ### Shared Lighter/Darker Colors.
-Does your character have two colors that one is darker than the other but you have no way of setting up recolorability? Here's how!
+Does your character have two colors that one is darker than the other but you have no more recolorable parts to work with? Here's how!
 
-Make a material with the same exact color as the other. Set the 2nd Material to *Decal*. Set set up a transparent color of your choice, either white or black.
+Make a material with the same exact color as the other. Set the 2nd Material to *Decal*. Make an image with a transparent color of your choice (either white or black).
 
 ![Showcase](https://github.com/coop-deluxe/character-template/assets/140215214/9ffec240-c159-4fca-8fdd-608417fe86fa)
 
-Here's the result! They're BOTH in CAP color!
+Here's the result! They BOTH use the CAP color!
 
 ![image (9)](https://github.com/coop-deluxe/character-template/assets/140215214/2ead971e-edf7-40ea-b422-4900e572a7a9)
 
