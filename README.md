@@ -120,7 +120,7 @@ This one is easy, but you can only replace existing animations with this.
 
 **Step 1:** Head to *Action Editor* and select the animation.
 
-![image](https://github.com/coop-deluxe/character-template/assets/140215214/8b79562f-ba76-4356-a82f-af9f022fa2fc)
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/e0910bfb-a2f5-4594-bf0d-b6edaa188371)
 
 **Step 2:** Head to the SM64 tab and find *Animation Exporter*. Make sure you have the directory under DynOS < Pack < [Character Name].
 
