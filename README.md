@@ -82,6 +82,120 @@ Type in ``GEO_ASM(0, geo_mario_set_player_colors),`` and ``GEO_ASM(LAYER_TRANSPA
 
 **Step 3:** Delete any old .bin file and open the game to create a new! And you're set!
 
+## How to create Custom Animations!
+Wanna add your own animations to your character? Here's how!
+
+**Step 1:** Check your Animation Pointers file that is included in the ZIP file. THESE will help you!
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/f9124c96-05d3-4099-9bb4-c534a211a3fd)
+
+**Step 2:** Set it to *Dope Sheet*, then set it to *Action Editor*.
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/c73b8276-c5b8-412c-8c98-b608ccdad269)
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/03b49722-3feb-4312-9086-808a5c2f1785)
+
+**Step 3:** Go to Pose Properties and set the layer to ONLY the first one. The first one is to move the limbs, while the 2nd is for functions such as switch, scale, etc.
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/062aaf43-4fa2-4345-8f7d-45f990c5337d)
+
+**Step 4:** Because of how the armature works, you can ONLY rotate the limbs so be aware of that! Select a bone and start with one frame. Then press I and *Location & Rotation*.
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/894e4607-41d2-49ff-ae06-538c8170ca9d)
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/441ff2a8-478f-4a6a-b15f-f46349a49545)
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/55c2bfd4-2968-4c26-85c2-520f8b65a39f)
+
+**Step 5:** Move to another frame and move the limb to how you want it, and THEN press I and *location & Rotation* yet again.
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/ca8fc6d1-553b-45c0-932d-417edb61276b)
+
+You can repeat the process with the rest of the limbs! 
+NOTE: Animations C3, C4, and C5 are all three-parts of the idle animation. In order for the custom animation to not break, you must have each animation to start from from to frame 30. You can also set up the manual range of the frames.
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/72ea7b96-0499-4a32-9230-312e745ee4f5)
+
+## How to export Custom Animations!
+There are two ways of adding them.
+
+### DynOS
+This one is easy, but you can only replace existing animations with this.
+
+**Step 1:** Head to *Action Editor* and select the animation.
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/8b79562f-ba76-4356-a82f-af9f022fa2fc)
+
+**Step 2:** Head to the SM64 tab and find *Animation Exporter*. Make sure you have the directory under DynOS < Pack < [Character Name].
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/f0f26d03-ed12-4658-8565-cab090995fc0)
+
+**Step 3:** Once the animations are exported, head to the anims C files and open them to manually edit them. Table and Anim BOTH most be edited!
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/a9bd91f7-2cc9-497a-8042-1d425b3b72a9)
+
+**Step 4:** Delete the white highlighted ``mario_`` parts so that the animations can work.
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/cd29d849-fe5a-4a7a-9501-07516ede8247)
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/b2a6b271-974c-4e7c-aa2a-3727bca0ce3a)
+
+**Step 5:** Once that's saved, delete the old Bin file and open the game to generate a new one!
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/1202ebb9-d97a-4e7f-b93b-e1fda67b6ea0)
+
+And it's done!
+NOTE: You don't need to re-export the geo.inc.c and and model.inc.c files as the anim files are their own thing. You ALSO don't need to replace the table.inc.c file once it's edited.
+
+### Lua
+With this, you can make any added custom animation possible! But it takes lua knowledge and alot of work to do so.
+
+**Step 1:** Create a lua file and write ``smlua_anim_util_register_animation(``, then the name of the animation. For example:
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/fcd42c88-4fd3-4309-b82f-75bf5a366f82)
+
+**Step 2** If the animation file is exported, open it and copy it's contents. Here's the order of how it's done:
+
+**Tables**
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/c24faa14-1c37-4ebb-a2fa-5ceba1897053)
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/abd57621-3296-4829-a547-1eb8bf03ca36)
+
+**Values**
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/27280621-9fc4-4289-bb95-163c829999a0)
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/db1b9589-c5b8-4806-b043-14cbb54394e3)
+
+**Indices**
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/281d1565-d189-40fe-b1ae-1e704b2cc3d7)
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/08c2ad58-a499-4184-a279-d92b2e78b146)
+
+Example on how it's set up:
+
+```
+smlua_anim_util_register_animation("luigi_run",
+    0,
+    0,
+    0,
+    0,
+    71,
+    {
+    0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+    },
+    {
+    0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
+    }
+)
+```
+
+Lua Example:
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/f22291b4-8246-4807-a1bb-d913921a09dd)
+
+And that's how it's done! You can either have the code in main.lua or be it's own animation.lua file!
+
 ## Common Error Fixes!
 Errors, they stink, but we've been through this before!
 
