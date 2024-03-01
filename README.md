@@ -104,7 +104,8 @@ Wanna add your own animations to your character? Here's how!
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/441ff2a8-478f-4a6a-b15f-f46349a49545)
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/55c2bfd4-2968-4c26-85c2-520f8b65a39f)
 
-**Step 5:** Move to another frame and move the limb to how you want it, and THEN press I and *location & Rotation* yet again.
+**Step 5:** Move to another frame and move the limb to how you want it, and THEN press I and *Location & Rotation* yet again.
+
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/ca8fc6d1-553b-45c0-932d-417edb61276b)
 
 You can repeat the process with the rest of the limbs! 
