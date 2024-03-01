@@ -126,7 +126,7 @@ This one is easy, but you can only replace existing animations with this.
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/f0f26d03-ed12-4658-8565-cab090995fc0)
 
-**Step 3:** Once the animations are exported, head to the anims C files and open them to manually edit them. Table and Anim BOTH most be edited!
+**Step 3:** Once the animations are exported, head to the anims C files and open them to manually edit them. Table and Anim MUST be edited!
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/a9bd91f7-2cc9-497a-8042-1d425b3b72a9)
 
@@ -140,6 +140,7 @@ This one is easy, but you can only replace existing animations with this.
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/1202ebb9-d97a-4e7f-b93b-e1fda67b6ea0)
 
 And it's done!
+
 NOTE: You don't need to re-export the geo.inc.c and and model.inc.c files as the anim files are their own thing. You ALSO don't need to replace the table.inc.c file once it's edited.
 
 ### Lua
