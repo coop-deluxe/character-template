@@ -287,6 +287,18 @@ New Code:
       gsSPEndDisplayList(),
     };
 
+NOTE: Make sure you replace ``mario`` with the correct default character you're replacing.
+
+Default Characters:
+``mario``
+``luigi``
+``toad_player``
+``waluigi``
+``wario``
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/3d3ff8a9-6e39-4b75-b565-588eecc4ac46)
+
+
 ## Miscellaneous
 Want some tips based on what we learned? No problem!
 
