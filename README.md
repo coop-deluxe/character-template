@@ -253,6 +253,9 @@ Ever wonder why your model always was away from the shadow and you don't know ho
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/8dca5754-e42d-4ccf-9288-8a0a284a835e)
 
 ### Metal Texture screws up Romhacks
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/c0032846-57f4-4c70-a2b4-66913f8c719a)
+
 Due to how the new Metal Texture works, it messes up with the romhack textures. to fix this, open *model.inc.c* file, then replace the code in the screenshot entirely with this:
 
 Original Code (At the VERY bottom!):
