@@ -82,6 +82,11 @@ Type in ``GEO_ASM(0, geo_mario_set_player_colors),`` and ``GEO_ASM(LAYER_TRANSPA
 
 **Step 3:** Delete any old .bin file and open the game to create a new! And you're set!
 
+**Metal Coloring:**
+While Coop Deluxe allows you to only replace the lights with just ``gsSPCopyLightsPlayerPart(),``, it isn't the same for Ex-Coop. You must replace COMBINELERP with this: ``gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),``
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/159d911a-9a29-4900-b126-3cf62e830831)
+
 ## How to create Custom Animations!
 Wanna add your own animations to your character? Here's how!
 
