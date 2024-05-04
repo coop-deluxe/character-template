@@ -86,7 +86,7 @@ GEO_ASM(LAYER_ALPHA + 3, geo_mario_set_player_colors),
 GEO_ASM(LAYER_TRANSPARENT + 3, geo_mario_set_player_colors),
 ```
 
-![image](image.png)
+![image](https://github.com/coop-deluxe/character-template/assets/88401287/bda276fd-0a08-4710-b71a-e397a18fb0a4)
 
 **Step 2:** Open the `model.inc.c` file and head to 3/4 of the code. Replace the highlighted code with ``gsSPCopyLightsPlayerPart(???),`` to add in the coloring! Replace the ``???`` with the recoloring slot you want the material to use.
 
@@ -261,13 +261,20 @@ And that's it, now the model should be centered:
 If your character is floating or sinking through the floor, you can easily fix it by following this guide:
 
 **Step 1:** While you're in `Object Mode` select the armature to lower its origin point by firstly setting the action to the `In-Game Example (DO NOT EXPORT WITH THIS)` action, then go to the top right corner of the screen and click on the `Options` tab and check the `Origins` and `Parents` boxes (make sure to uncheck them when you're done), then move the origin point down using the move tool until it's exactly under your character's feet, the orange point should look something like this:
+
 ![image](https://github.com/coop-deluxe/character-template/assets/88401287/ea73b295-a831-42b1-b157-8d883e042326)
+
 **Step 2:** Find the `Scale` bone in your armature and go into its bone properties
+
 **Step 3:** Here is where it gets slightly more complicated, you will have to do some math here, and find the scale value (by default it should be 0.25) and change it depending on your character (taller = increase, shorter = decrease), and keep the new value noted (you might have to change it multiple times so that it displays correctly in-game):
+
 ![image](https://github.com/coop-deluxe/character-template/assets/88401287/1ca1c40a-d484-4c52-9a99-dd5acf877e20)
+
 **Step 4:** Remember when I said that you will have to do some math, here is the formula:
 `0.25/n * 212.766` where `n` is your new value, just put it in a calculator and get the result
+
 **Step 5:** Lastly, in the `SM64` tab of Fast64, find the `SM64 File Settings` menu and find the `Blender to SM64 Scale` value, insert your value from the last step here.
+
 ![image](https://github.com/coop-deluxe/character-template/assets/88401287/45c3bcba-60da-400b-b672-0a80e3b74098)
 
 Now your model should have most of its offsets fixed (some animations like ledge grabbing will still look like you're floating depending on the arm length)
@@ -393,26 +400,43 @@ You can download the textures here:
 Do you want to change where the wings are on your character? It's easier than you may think, check this out:
 
 **Step 1:** With your armature selected, go into `Pose Mode` and select the `Left/Right Wing` bones
+
 **Step 2:** Select each one individually and go into the `Item` tab
+
 **Step 3:** There will be locked locks beside the location fields, unlock them so you can move the wing bones
+
 **Step 4:** Move your wing bones to where you want them and apply as rest pose, make sure to lock the bones again
+
 **Step 5:** Go into `Edit Mode` and find the wing bones and once again select them individually
+
 **Step 6:** Change both of their parents to the `Torso` bone
+
 **Step 7:** Find the `Eye State Switch` bone and change its parent to the `1 C-Up Head Rotation` bone
+
 **Step 8:** Find the `Capless Switch` bone and change its parent to the `Torso` bone, this is how the game handles the showing and hiding of wings on your head
+
 **Step 9:** Find the `Head` bone and change its parent to the `Capless Switch` bone
 
 Once you're done with that, the wings should be on Mario's back, but now the capless head is broken, so we need to fix it:
 
 **Step 1:** Select the `Capless Head` armature and go into `Edit Mode`
+
 **Step 2:** Create 3 new bones by hitting *Shift+A* 3 times
+
 **Step 3:** Rename the first one to `Capless Head Color`
+
 **Step 4:** Rename the second one to `0 Capless C-Up Head Rotation Function`
+
 **Step 5:** Rename the third one to `1 Capless C-Up Head Rotation`
+
 **Step 6:** Change the `0 Capless C-Up Head Rotation Function` and `1 Capless C-Up Head Rotation` bones' parents to `Capless Head Color` bone
+
 **Step 7:** Change the `Capless Head Color` bone's parent to the `Capless Head Switch Option` bone
+
 **Step 8:** Change the `Capless Head Eye State Switch` bone's parent to the `1 Capless C-Up Head Rotation`
-**Step 9:** Go into `Pose Mode` and do the change the following
+
+**Step 9:** Go into `Pose Mode` and do the change the following:
+
   * For the `0 Capless C-Up Head Rotation Function` change the geolayout command to `Function` and the `Function` field to `802773a4`
   * For the `1 Capless C-Up Head Rotation` change the geolayout command to `Rotate`
 
