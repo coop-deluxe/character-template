@@ -442,4 +442,27 @@ Once you're done with that, the wings should be on Mario's back, but now the cap
 
 And now you're done, now you have wings on your character's back with no issues.
 
+### Fixing Mirror Mario
+Since the vanilla game only handled culling for fully opaque materials in Mario's reflection, this breaks on models that use alpha clip or transparent materials. Let's fix that:
+
+**Step 1:** In your `geo.inc.c`, search for ``GEO_ASM(0, geo_mirror_mario_backface_culling),``, it should be near the bottom of the file.
+
+**Step 2:** Replace it with the following:
+``
+GEO_ASM(LAYER_OPAQUE << 2, geo_mirror_mario_backface_culling),
+GEO_ASM(LAYER_ALPHA << 2, geo_mirror_mario_backface_culling),
+GEO_ASM(LAYER_TRANSPARENT << 2, geo_mirror_mario_backface_culling),
+``
+
+**Step 3:** Search for ``GEO_ASM(1, geo_mirror_mario_backface_culling),``, this should be one of the very last few lines in the geo.inc.c before the `material_revert_render_settings` displaylists.
+
+**Step 4:** Replace it with the following:
+``
+GEO_ASM((LAYER_OPAQUE << 2) | 1, geo_mirror_mario_backface_culling),
+GEO_ASM((LAYER_ALPHA << 2) | 1, geo_mirror_mario_backface_culling),
+GEO_ASM((LAYER_TRANSPARENT << 2) | 1, geo_mirror_mario_backface_culling),
+``
+
+And now you're done, this should fix the backface culling in mirror reflections.
+
 ### Good luck!
