@@ -448,20 +448,18 @@ Since the vanilla game only handled culling for fully opaque materials in Mario'
 **Step 1:** In your `geo.inc.c`, search for ``GEO_ASM(0, geo_mirror_mario_backface_culling),``, it should be near the bottom of the file.
 
 **Step 2:** Replace it with the following:
-``
-GEO_ASM(LAYER_OPAQUE << 2, geo_mirror_mario_backface_culling),
-GEO_ASM(LAYER_ALPHA << 2, geo_mirror_mario_backface_culling),
-GEO_ASM(LAYER_TRANSPARENT << 2, geo_mirror_mario_backface_culling),
-``
+
+    GEO_ASM(LAYER_OPAQUE << 2, geo_mirror_mario_backface_culling),
+    GEO_ASM(LAYER_ALPHA << 2, geo_mirror_mario_backface_culling),
+    GEO_ASM(LAYER_TRANSPARENT << 2, geo_mirror_mario_backface_culling),
 
 **Step 3:** Search for ``GEO_ASM(1, geo_mirror_mario_backface_culling),``, this should be one of the very last few lines in the geo.inc.c before the `material_revert_render_settings` displaylists.
 
 **Step 4:** Replace it with the following:
-``
-GEO_ASM((LAYER_OPAQUE << 2) | 1, geo_mirror_mario_backface_culling),
-GEO_ASM((LAYER_ALPHA << 2) | 1, geo_mirror_mario_backface_culling),
-GEO_ASM((LAYER_TRANSPARENT << 2) | 1, geo_mirror_mario_backface_culling),
-``
+
+    GEO_ASM((LAYER_OPAQUE << 2) | 1, geo_mirror_mario_backface_culling),
+    GEO_ASM((LAYER_ALPHA << 2) | 1, geo_mirror_mario_backface_culling),
+    GEO_ASM((LAYER_TRANSPARENT << 2) | 1, geo_mirror_mario_backface_culling),
 
 And now you're done, this should fix the backface culling in mirror reflections.
 
