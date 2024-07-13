@@ -140,8 +140,34 @@ Here is a picture explaining this code which will be used for LIGHTS: ```gsSPLig
 
 ![Lighting](https://github.com/user-attachments/assets/f1da0fdd-f832-4f9b-a430-2be6c4502da8)
 
-Here is also a picture explaining how THIS specific code for AMBIENT: 
+Here is also a picture explaining how THIS specific code for AMBIENT: ```gsSPCopyLightEXT(2, 15),```
 
+![BODY PARTS](https://github.com/user-attachments/assets/b4da9a3d-386c-41aa-90d0-2f72da4c8ba1)
+
+Now that you understand a BIT more about how it works, let's get to each material in order.
+
+**LOGO**
+
+Replace the COMBINELERP with this -> ```gsDPSetCombineLERP(TEXEL0, SHADE, TEXEL1, SHADE, TEXEL0, 0, ENVIRONMENT, 0, TEXEL0, SHADE, TEXEL1, SHADE, TEXEL0, 0, ENVIRONMENT, 0),```
+
+![image](https://github.com/user-attachments/assets/4131357a-5e9e-4c29-84c1-4a787ae66732)
+
+**METAL**
+
+![image](https://github.com/user-attachments/assets/ceef22b2-879d-4d4e-a25a-e1b610a0bd11)
+
+**SIDEBURNS**
+
+Replace the COMBINELERP with this -> ```gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, ENVIRONMENT, 0, TEXEL0, 0, SHADE, COMBINED, 0, 0, 0, COMBINED),```
+
+![image](https://github.com/user-attachments/assets/da0725b8-f46a-499d-8c8b-d87904ce6f02)
+
+**METAL WINGS**
+```gsDPSetCombineLERP(TEXEL0, 0, SHADE, TEXEL1, TEXEL0, 0, ENVIRONMENT, 0, TEXEL0, 0, SHADE, TEXEL1, TEXEL0, 0, ENVIRONMENT, 0),```
+
+![image](https://github.com/user-attachments/assets/d0c84d99-3908-4632-8861-a081ab6c0e15)
+
+Aaaaaand you should be good!
 
 ## How to create Custom Animations!
 Wanna add your custom animations to your character? Here's how!
