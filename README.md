@@ -66,7 +66,7 @@ The model has now been built and is ready to use for modding! Any change to the 
 Make sure all the mesh has the materials all shared AND organized.
 A program such as Visual Code is needed to manually edit the files.
 
-The game has eight recoloring slots for recolorability, though the metal cap one just uses the cap color:
+The game has eight recoloring slots for recolorability!
 
 * `CAP`
 * `SHIRT`
@@ -75,7 +75,7 @@ The game has eight recoloring slots for recolorability, though the metal cap one
 * `PANTS`
 * `GLOVES`
 * `SHOES`
-* `METAL` (Returns the `CAP` constant)
+* `EMBLEM`
 
 **Step 1:** Open the `geo.inc.c` file and scroll to the bottom. 
 
@@ -84,15 +84,64 @@ Type in the following lines in between. These will activate recolorability for m
 GEO_ASM(LAYER_OPAQUE + 3, geo_mario_set_player_colors),
 GEO_ASM(LAYER_ALPHA + 3, geo_mario_set_player_colors),
 GEO_ASM(LAYER_TRANSPARENT + 3, geo_mario_set_player_colors),
+GEO_ASM(LAYER_OPAQUE << 2, geo_mirror_mario_backface_culling),
+GEO_ASM(LAYER_ALPHA << 2, geo_mirror_mario_backface_culling),
+GEO_ASM(LAYER_TRANSPARENT << 2, geo_mirror_mario_backface_culling),
+GEO_ASM(0, geo_mirror_mario_set_alpha),
 ```
 
-![image](https://github.com/coop-deluxe/character-template/assets/88401287/bda276fd-0a08-4710-b71a-e397a18fb0a4)
+![image](https://github.com/user-attachments/assets/cc713a05-935a-46ed-9c3c-89b507627ffe)
 
-**Step 2:** Open the `model.inc.c` file and head to 3/4 of the code. Replace the highlighted code with ``gsSPCopyLightsPlayerPart(???),`` to add in the coloring! Replace the ``???`` with the recoloring slot you want the material to use.
+**Step 2:** Make sure this code is added near the end of the geo.inc, replacing the old backculling code.
+
+```
+GEO_ASM((LAYER_OPAQUE << 2) | 1, geo_mirror_mario_backface_culling),
+GEO_ASM((LAYER_ALPHA << 2) | 1, geo_mirror_mario_backface_culling),
+GEO_ASM((LAYER_TRANSPARENT << 2) | 1, geo_mirror_mario_backface_culling),
+```
+
+![image](https://github.com/user-attachments/assets/e4d5f023-5c53-4a1b-a237-f9ef1c02f5f5)
+
+**Step 3:** Open the `model.inc.c` file and head to 3/4 of the code. Replace the highlighted code with ``gsSPCopyLightsPlayerPart(???),`` to add in the coloring! Replace the ``???`` with the recoloring slot you want the material to use.
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/65b2ec99-3604-4cee-b38f-bb00c631a79c)
 
-**Step 3:** Delete any old `.bin` file and restart the game to create a new one! And you're set!
+**Step 4:** Delete any old `.bin` file and restart the game to create a new one! And you're set!
+
+### How to Set Color Lighting to Material! -- ADVANCED!
+
+In order to make proper faithful colors to the Vanilla models, you must follow these first!
+
+To make this simple, these are your **LIGHT GROUPS** as each have proper names. Each light group is set up here so you'd use them for special coding. However, you can also type in and add a new light_group specifically for a few materials!
+
+![image](https://github.com/user-attachments/assets/201d9164-1d79-4203-9dfa-9107cc8e8766)
+
+Here's what you'd need for proper coloring! Make sure to rename ``test_???_lights`` to your liking!
+
+```
+Lights1 test_logo_lights = gdSPDefLights1(
+	0xFF, 0x0, 0x0,
+	0x0, 0x0, 0x0, 0x49, 0x49, 0x49);
+
+Lights1 test_sideburn_lights = gdSPDefLights1(
+	0x73, 0x6, 0x0,
+	0x0, 0x0, 0x0, 0x49, 0x49, 0x49);
+
+Lights1 test_metal_lights = gsSPDefLights1(
+    0x7F, 0x7F, 0x7F,
+	0x0, 0x0, 0x0, 0x28, 0x28, 0x28);
+
+Lights1 test_metal_wing_lights = gdSPDefLights1(
+	0x7F, 0x7F, 0x7F,
+	0x0, 0x0, 0x0, 0x49, 0x49, 0x49);
+```
+
+Here is a picture explaining this code which will be used for LIGHTS: ```gsSPLight(&luigi_light_group.l, 1),```
+
+![Lighting](https://github.com/user-attachments/assets/f1da0fdd-f832-4f9b-a430-2be6c4502da8)
+
+Here is also a picture explaining how THIS specific code for AMBIENT: 
+
 
 ## How to create Custom Animations!
 Wanna add your custom animations to your character? Here's how!
