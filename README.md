@@ -116,7 +116,7 @@ To make this simple, these are your **LIGHT GROUPS** as each have proper names. 
 
 ![image](https://github.com/user-attachments/assets/201d9164-1d79-4203-9dfa-9107cc8e8766)
 
-Here's what you'd need for proper coloring! Make sure to rename ``test_???_lights`` to your liking!
+Here's what you'd need for proper coloring! Make sure to rename ``test_???_lights`` to your liking! **NOTE:** The wings can share the **metal_lights** group with no issues.
 
 ```
 Lights1 test_logo_lights = gdSPDefLights1(
@@ -127,7 +127,7 @@ Lights1 test_sideburn_lights = gdSPDefLights1(
 	0x73, 0x6, 0x0,
 	0x0, 0x0, 0x0, 0x49, 0x49, 0x49);
 
-Lights1 test_metal_lights = gsSPDefLights1(
+Lights1 test_metal_lights = gdSPDefLights1(
     0x7F, 0x7F, 0x7F,
 	0x0, 0x0, 0x0, 0x28, 0x28, 0x28);
 
