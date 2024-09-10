@@ -5,7 +5,7 @@ This is a character template that uses the original Fast64 blend file and expand
 
 [Fast64-Coop](https://github.com/coop-deluxe/fast64) - Provides the basic necessities for overall anything Mario 64 related. Such as: Levels, Characters, Objects, Animations, etc. It's updated for Level Lightmaps and Scrolling Managers.
 
-[Fast64-Gart](https://github.com/ManIsCat2/Fast64-Gart) - Made specifically to lessen any Manualw work for Custom Character Creation as much as possible. Provides Recoloring features in Blender to set up so that you no longer manually edit the code.
+[Fast64-Gart](https://github.com/ManIsCat2/Fast64-Gart) - Made specifically to lessen any Manual work for Custom Character Creation as much as possible. Provides Recoloring features in Blender to set up so that you no longer manually edit the code.
 
 Recommended to use Blender ver. 3.6 as ver. 4 breaks Fast64.
 
