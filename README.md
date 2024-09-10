@@ -1,7 +1,7 @@
 # Character Template for Coop Deluxe
 This is a character template that uses the original Fast64 blend file and expands upon it to take advantage of the fewer limitations the PC Port has. Not only does it rename the offsets with appropriate names, but also contains multiple heads for the unused eyestates.
 
-*Fast64-Coop is required for this. Blend file. You can download it from here:* https://github.com/coop-deluxe/fast64
+*Fast64-Coop is required for this. Blend file. You can download it from here:* [https://github.com/coop-deluxe/fast64](https://github.com/ManIsCat2/Fast64-Gart)
 Recommended to use Blender ver. 3.6 as ver. 4 breaks Fast64.
 
 To install it, head to the icon on the upper left and switch to *Preferences* then head to *Add-ons*.
