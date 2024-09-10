@@ -539,4 +539,69 @@ Since the vanilla game only handled culling for fully opaque materials in Mario'
 
 And now you're done, this should fix the backface culling in mirror reflections.
 
+### Fixing Vanish Cap Seeping (Fix found by SKL!)
+Do your models sometimes mess with the UI when you get the vanish cap? There's a relatively easy way to fix this, and it can also indirectly fix the metal cap romhack texture bug too!
+
+![image](https://github.com/user-attachments/assets/27fc4dec-74b5-41f4-8b1c-683bef614927)
+
+
+**NOTE: the bug only occurs in newer fast64 versions, so if you want a faster way to fix this for good, use older fast64 versions! This is for people using blender 4.0**
+
+**Step 1:** In your `geo.inc.c`, search for the second-to last ``GEO_CLOSE_NODE(),`` and replace it with:
+		``GEO_CLOSE_NODE(),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, mario_material_revert_render_settings
+		),
+		GEO_DISPLAY_LIST(LAYER_ALPHA, mario_material_revert_render_settings),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, 
+		mario_material_revert_render_settings)``
+
+  If in doubt, it should be just right under the last backface culling code!
+
+![image](https://github.com/user-attachments/assets/08f56ff6-9109-41c5-9aa6-a8318a0ad8e7)
+
+
+  **Step 2:** Now open `geo_header.h`, and paste this line at the very end: ``extern Gfx mario_material_revert_render_settings[];``
+
+![image](https://github.com/user-attachments/assets/e4b12c5a-54c5-4ee8-aae6-aca5e2eebce5)
+
+
+  **Step 3:** Almost there! Finally, open ``model.inc.c`` and at the end, paste:
+
+      Gfx mario_material_revert_render_settings[] = {
+      gsDPPipeSync(),
+      gsSPSetGeometryMode(G_LIGHTING),
+      gsSPClearGeometryMode(G_TEXTURE_GEN),
+      gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
+      gsSPTexture(65535, 65535, 0, 0, 0),
+      gsDPSetEnvColor(255, 255, 255, 255),
+      gsDPSetAlphaCompare(G_AC_NONE),
+
+      gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, 0),
+      gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+      gsDPLoadBlock(7, 0, 0, 1023, 256),
+      gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
+      gsDPSetTileSize(0, 0, 0, 124, 124),
+
+      gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, 0),
+      gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 0, 256, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+      gsDPLoadBlock(6, 0, 0, 1023, 256),
+      gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 256, 1, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
+      gsDPSetTileSize(1, 0, 0, 124, 124),
+
+      gsSPEndDisplayList(),
+    };
+
+NOTE: Make sure you replace ``mario`` with the correct default character you're replacing in EVERY ``material_revert_render_settings`` line!
+
+Default Characters:
+``mario``
+``luigi``
+``toad_player``
+``waluigi``
+``wario``
+
+![image](https://github.com/coop-deluxe/character-template/assets/140215214/3d3ff8a9-6e39-4b75-b565-588eecc4ac46)
+
+  **Step 4:** Delete any old geo_bin file, and enjoy a properly functional Vanish Cap!
+
 ### Good luck!
