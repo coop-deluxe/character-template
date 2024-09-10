@@ -1,7 +1,7 @@
 # Character Template for Coop Deluxe
 This is a character template that uses the original Fast64 blend file and expands upon it to take advantage of the fewer limitations the PC Port has. Not only does it rename the offsets with appropriate names, but also contains multiple heads for the unused eyestates.
 
-*Fast64 is required for this. Blend file. You can download it these two:
+*Fast64 is required for this. Blend file. You can download it these two:*
 
 [Fast64-Coop](https://github.com/coop-deluxe/fast64) - Provides the basic necessities for overall anything Mario 64 related. Such as: Levels, Characters, Objects, Animations, etc. It's updated for Level Lightmaps and Scrolling Managers.
 
