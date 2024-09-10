@@ -64,6 +64,8 @@ You must have all the mesh parented and assigned vertex groups for the export to
 The model has now been built and is ready to use for modding! Any change to the model must have the old .bin file deleted!
 
 ## How to Set Color Lighting to Material!
+This is for [AgentX's Fast64-Coop](https://github.com/coop-deluxe/fast64). If you're using [ManIsCat2's Fast64-Gart](https://github.com/ManIsCat2/Fast64-Gart), [click here](https://github.com/ManIsCat2/Fast64-Gart?tab=readme-ov-file#coop-recolorability) for instructions.
+
 Make sure all the mesh has the materials all shared AND organized.
 A program such as Visual Code is needed to manually edit the files.
 
@@ -233,6 +235,8 @@ And it's done!
 NOTE: You don't need to re-export the `geo.inc.c` and and `model.inc.c` files as the animation files are their own thing. You ALSO don't need to replace the `table.inc.c` file once it's edited.
 
 ### Lua
+This is for [AgentX's Fast64-Coop](https://github.com/coop-deluxe/fast64). If you're using [ManIsCat2's Fast64-Gart](https://github.com/ManIsCat2/Fast64-Gart), [click here](https://github.com/ManIsCat2/Fast64-Gart?tab=readme-ov-file#smlua-anim-exporter-wip) for instructions.
+
 With this, you can add any custom animation and have it be played without replacing a vanilla animation! But it takes `lua` knowledge and a lot of work to do so.
 
 **Step 1:** Create a lua file and write ``smlua_anim_util_register_animation(``, then the name of the animation. For example:
