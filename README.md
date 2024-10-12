@@ -117,6 +117,8 @@ GEO_ASM((LAYER_TRANSPARENT << 2) | 1, geo_mirror_mario_backface_culling),
 
 ### How to Set Color Lighting to Material! -- ADVANCED!
 
+This is for [AgentX's Fast64-Coop](https://github.com/coop-deluxe/fast64). If you're using [ManIsCat2's Fast64-Gart](https://github.com/ManIsCat2/Fast64-Gart), [click here](https://github.com/ManIsCat2/Fast64-Gart?tab=readme-ov-file#coop-recolorability) for instructions.
+
 In order to make proper faithful colors to the Vanilla models, you must follow these first!
 
 To make this simple, these are your **LIGHT GROUPS** as each have proper names. Each light group is set up here so you'd use them for special coding. However, you can also type in and add a new light_group specifically for a few materials!
