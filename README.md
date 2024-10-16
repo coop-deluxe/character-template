@@ -299,6 +299,15 @@ And that's how it's done! You can either add the code in `main.lua` or add it in
 ## Common Error Fixes!
 Errors, they stink, but we've been through this before!
 
+### Everything is Black.
+All the models don't show the colors, except the textures. This is because the template is using an outdated version of Fast64. This is easily fixable.
+
+![image](https://github.com/user-attachments/assets/b55335be-050b-412a-aee8-80b0446cb9cf)
+
+Go to the Fast64 settings, then head to Fast64 Material Converter, the click "Recreate F3D Materials as version X". It should resolve the issue.
+
+![image](https://github.com/user-attachments/assets/26a92370-060a-43ba-8143-df500a60acc0)
+
 ### Vertex Groups Issue
 
 This one is classic, it's annoying when it pops up but not that hard to fix, so don't worry and follow this guide:
@@ -319,6 +328,36 @@ To fix the third issue, firstly select all used meshes and go into `Edit Mode`, 
 ![image](https://github.com/coop-deluxe/character-template/assets/88401287/878e427a-28d6-41fd-b0f3-a1467c3c70f7)
 
 That should do it!
+
+### C18 Textures prevent export!
+
+This just means the multi-textured materials aren't formatted right.
+
+![image](https://github.com/user-attachments/assets/519e85f2-df61-4793-998d-487195026568)
+
+**Step 1:** Head to the Materials section, then head to the texture settings.
+
+![image](https://github.com/user-attachments/assets/23553aa7-e9c3-4c9e-ac33-c011fa5c54b0)
+
+**Step 2:** Select format of the Image (NOT CI-Format) to RGBA 16-Bit or 32-Bit!
+
+![image](https://github.com/user-attachments/assets/844c9a13-d292-452a-8675-5dd71cd7a7ed)
+
+Make sure ALL mutli-textured Material's texture formats are set correctly.
+
+### My geo.bin file won't generate!
+
+If your model was exported successfully, yet the model won't generate, this means the texture path is incorrectly set.
+
+**Step 1:** Make sure this option is enabled. This is the only way for the Texture Path to appear as this is required for multi-textured materials such as Metal or Metal Wings.
+
+![image](https://github.com/user-attachments/assets/c97dd45c-7b94-4489-b30a-c1bdf9c52bc8)
+
+**Step 2:** Head to the Geolayout Exporter and enter /actors/``folder name``/. This is a guaranteed way for texture path to work no matter which computer uses the blend. Remember, Texture Path is the RESOURCE you're pulling from. It MUST match the folder name.
+
+![image](https://github.com/user-attachments/assets/9ad33362-70c4-4a0c-b074-0d4e5b95ff79)
+
+**NOTE:** Geolayout name does NOT need to match the folder name if the model will be loaded by mods such as Character Select.
 
 ### Metal Head Bug
 This is a Fast64 bug that occurs due to an update that changed how the materials work.
