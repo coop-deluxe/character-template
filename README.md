@@ -1,21 +1,20 @@
-# Character Template for Coop Deluxe
-This is a character template that uses the original Fast64 blend file and expands upon it to take advantage of the fewer limitations the PC Port has. Not only does it rename the offsets with appropriate names, but also contains multiple heads for the unused eyestates.
+# Character Templates for Coop Deluxe
+These are character templates made for player characters that appear in **Super Mario 64 Deluxe**. It adds many QOL features that make editing your models easier.
 
-*Fast64 is required for this. Blend file. You can download it these two:*
+*We recommended using Blender v3.6*
 
-[Fast64-Coop](https://github.com/coop-deluxe/fast64) - Provides the basic necessities for overall anything Mario 64 related. Such as: Levels, Characters, Objects, Animations, etc. It's updated for Level Lightmaps and Scrolling Managers.
+*Fast64 is required for this `.blend` file. We recommend you download one of these 2 forks:*
 
-[Fast64-Gart](https://github.com/ManIsCat2/Fast64-Gart) - Made specifically to lessen any Manual work for Custom Character Creation as much as possible. Provides Recoloring features in Blender to set up so that you no longer manually edit the code.
+[Fast64-Coop](https://github.com/coop-deluxe/fast64) - This fork is made for specific `SM64CoopDX` features, including Level Lightmaps and Scrolling Managers.
 
-Recommended to use Blender ver. 3.6 as ver. 4 breaks Fast64.
+[Fast64-Gart](https://github.com/ManIsCat2/Fast64-Gart) - Made to help reduce the amount of post-export editing for custom player characters as much as possible. Provides recoloring features in Blender to set up recolorability for `SM64CoopDX`.
 
 To install it, head to the icon on the upper left and switch to *Preferences* then head to *Add-ons*.
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/323b6719-3ae4-4f55-a3aa-8295cc4adb8c)
 
-
 ## How to Rig Your Model!
-To rig the body parts, you must have the mesh triangulated. 
+To rig your mesh, follow this tutorial: 
 
 **Step 1:** Set to `Object Mode`. Have all the body parts joined using *Ctrl + J*. While holding *Shift* firstly click on the mesh, then the armature, and make sure it's in that order, then hit *Ctrl + P* and click `With Empty Groups`.
 
@@ -46,7 +45,7 @@ Eye states are as follows:
 And you're done! You are now ready to export the model!
 
 ## How to Export!
-You must have all the mesh parented and assigned vertex groups for the export to happen.
+You must have all the meshes parented and assigned vertex groups for the export to work.
 
 **Step 1:** Hover to the right side on the toolbar and look into *GeoLayout Exporter*. Then select the directory. Either you place the files under *"sm64coopdx/mods/character_mod/actors"* or *dynos/packs*. However, if you prefer exporting to DynOS Packs, you must have it named one of the following depending on what character you want to replace (Note that you can always rename the *_geo.bin* files):
 * Mario: `mario`, `mario_geo`
@@ -68,12 +67,12 @@ You must have all the mesh parented and assigned vertex groups for the export to
 The model has now been built and is ready to use for modding! Any change to the model must have the old .bin file deleted!
 
 ## How to Set Color Lighting to Material!
-This is for [AgentX's Fast64-Coop](https://github.com/coop-deluxe/fast64). If you're using [ManIsCat2's Fast64-Gart](https://github.com/ManIsCat2/Fast64-Gart), [click here](https://github.com/ManIsCat2/Fast64-Gart?tab=readme-ov-file#coop-recolorability) for instructions.
+This is for [AgentX's Fast64-Coop](https://github.com/coop-deluxe/fast64) or the normal `Fast64` version. If you're using [ManIsCat2's Fast64-Gart](https://github.com/ManIsCat2/Fast64-Gart), [click here](https://github.com/ManIsCat2/Fast64-Gart?tab=readme-ov-file#coop-recolorability) for instructions, and you can skip this part.
 
-Make sure all the mesh has the materials all shared AND organized.
+Make sure all the mesh materials are shared and organized.
 A program such as Visual Code is needed to manually edit the files.
 
-The game has eight recoloring slots for recolorability!
+The game has 9 recoloring slots for recolorability!
 
 * `CAP`
 * `SHIRT`
@@ -83,28 +82,35 @@ The game has eight recoloring slots for recolorability!
 * `GLOVES`
 * `SHOES`
 * `EMBLEM`
+* `METAL`, however this points back to the `CAP` color.
 
-**Step 1:** Open the `geo.inc.c` file and scroll to the bottom. 
+**Step 1:** Open the `geo.inc.c` file and scroll to the bottom, **this step can be skipped if you're using the latest version of the templates**.
 
 Type in the following lines in between. These will activate recolorability for most materials. You **MUST** have them in for recolorability to work:
-```
+```c
 GEO_ASM(LAYER_OPAQUE + 3, geo_mario_set_player_colors),
+GEO_ASM(LAYER_OPAQUE_DECAL + 3, geo_mario_set_player_colors),
 GEO_ASM(LAYER_ALPHA + 3, geo_mario_set_player_colors),
 GEO_ASM(LAYER_TRANSPARENT + 3, geo_mario_set_player_colors),
+GEO_ASM(LAYER_TRANSPARENT_DECAL + 3, geo_mario_set_player_colors),
 GEO_ASM(LAYER_OPAQUE << 2, geo_mirror_mario_backface_culling),
+GEO_ASM(LAYER_OPAQUE_DECAL << 2, geo_mirror_mario_backface_culling),
 GEO_ASM(LAYER_ALPHA << 2, geo_mirror_mario_backface_culling),
 GEO_ASM(LAYER_TRANSPARENT << 2, geo_mirror_mario_backface_culling),
+GEO_ASM(LAYER_TRANSPARENT_DECAL << 2, geo_mirror_mario_backface_culling),
 GEO_ASM(0, geo_mirror_mario_set_alpha),
 ```
 
 ![image](https://github.com/user-attachments/assets/cc713a05-935a-46ed-9c3c-89b507627ffe)
 
-**Step 2:** Make sure this code is added near the end of the geo.inc, replacing the old backculling code.
+**Step 2:** Make sure this code is added near the end of the geo.inc, replacing the old backculling code, **this step can be skipped if you're using the latest version of the templates**.
 
-```
+```c
 GEO_ASM((LAYER_OPAQUE << 2) | 1, geo_mirror_mario_backface_culling),
+GEO_ASM((LAYER_OPAQUE_DECAL << 2) | 1, geo_mirror_mario_backface_culling),
 GEO_ASM((LAYER_ALPHA << 2) | 1, geo_mirror_mario_backface_culling),
 GEO_ASM((LAYER_TRANSPARENT << 2) | 1, geo_mirror_mario_backface_culling),
+GEO_ASM((LAYER_TRANSPARENT_DECAL << 2) | 1, geo_mirror_mario_backface_culling),
 ```
 
 ![image](https://github.com/user-attachments/assets/e4d5f023-5c53-4a1b-a237-f9ef1c02f5f5)
@@ -117,7 +123,7 @@ GEO_ASM((LAYER_TRANSPARENT << 2) | 1, geo_mirror_mario_backface_culling),
 
 ### How to Set Color Lighting to Material! -- ADVANCED!
 
-This is for [AgentX's Fast64-Coop](https://github.com/coop-deluxe/fast64). If you're using [ManIsCat2's Fast64-Gart](https://github.com/ManIsCat2/Fast64-Gart), [click here](https://github.com/ManIsCat2/Fast64-Gart?tab=readme-ov-file#coop-recolorability) for instructions.
+This is for [AgentX's Fast64-Coop](https://github.com/coop-deluxe/fast64) or the normal `Fast64` version. If you're using [ManIsCat2's Fast64-Gart](https://github.com/ManIsCat2/Fast64-Gart), [click here](https://github.com/ManIsCat2/Fast64-Gart?tab=readme-ov-file#coop-recolorability) for instructions, and you can skip this part.
 
 In order to make proper faithful colors to the Vanilla models, you must follow these first!
 
@@ -194,13 +200,13 @@ Wanna add your custom animations to your character? Here's how!
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/062aaf43-4fa2-4345-8f7d-45f990c5337d)
 
-**Step 4:** Because of the game's current limitations, you can only move and rotate the bones, so any scaling effect **will not** show in-game. Select a bone and start with one frame. Then press I and select `Location & Rotation`, this will insert a new frame on the current frame.
+**Step 4:** Because of the game's current limitations, you can only rotate the bones, so any movement or scaling **will not** show in-game. Select a bone and start with one frame. Then press I and select `Location & Rotation`, this will insert a new frame on the current frame.
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/894e4607-41d2-49ff-ae06-538c8170ca9d)
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/441ff2a8-478f-4a6a-b15f-f46349a49545)
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/55c2bfd4-2968-4c26-85c2-520f8b65a39f)
 
-**Step 5:** Move to another frame and move the limb to how you want it, and then press I and `Location & Rotation` yet again.
+**Step 5:** Move to another frame and rotate the limb to how you want it, and then press I and `Location & Rotation` yet again.
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/ca8fc6d1-553b-45c0-932d-417edb61276b)
 
@@ -381,41 +387,33 @@ Ever wonder why your model always was away from the shadow and you don't know ho
 
 And that's it, now the model should be centered:
 
-### Floating Short Characters and Sinking Tall Character
+### Incorrect `Y` animation offsets fix
+If your character is floating or sinking through the floor due to being too short or tall, you can easily fix it by **following this guide:**
 
-If your character is floating or sinking through the floor, you can easily fix it by following this guide:
-
-**Step 1:** While you're in `Object Mode` select the armature to lower its origin point by firstly setting the action to the `In-Game Example (DO NOT EXPORT WITH THIS)` action, then go to the top right corner of the screen and click on the `Options` tab and check the `Origins` and `Parents` boxes (make sure to uncheck them when you're done), then move the origin point down using the move tool until it's exactly under your character's feet, the orange point should look something like this:
-
-![image](https://github.com/coop-deluxe/character-template/assets/88401287/ea73b295-a831-42b1-b157-8d883e042326)
+**Step 1:** Create a scale bone in your armature that is a child of the root bone which should be the first offset bone
 
 **Step 2:** Find the `Scale` bone in your armature and go into its bone properties
 
-**Step 3:** Here is where it gets slightly more complicated, you will have to do some math here, and find the scale value (by default it should be 0.25) and change it depending on your character (taller = increase, shorter = decrease), and keep the new value noted (you might have to change it multiple times so that it displays correctly in-game):
+**Step 3:** Find the scale value (by default it should be 0.25) and change it depending to the following:
+`(n*0.25)/1.55997`
+Note that `n` is the length of your character's legs, find it by measuring the distance from the thigh to the shoe in the armature, if it's negative then just make it positive
 
-![image](https://github.com/coop-deluxe/character-template/assets/88401287/1ca1c40a-d484-4c52-9a99-dd5acf877e20)
+**Step 4:** Lastly, change the new scale bone's value to the following:
+`0.25 / ((n*0.25)/1.55997)`
+Once again `n` is the length of your character's legs, the same as above
 
-**Step 4:** Remember when I said that you will have to do some math, here is the formula:
-`0.25/n * 212.766` where `n` is your new value, just put it in a calculator and get the result
-
-**Step 5:** Lastly, in the `SM64` tab of Fast64, find the `SM64 File Settings` menu and find the `Blender to SM64 Scale` value, insert your value from the last step here.
-
-![image](https://github.com/coop-deluxe/character-template/assets/88401287/45c3bcba-60da-400b-b672-0a80e3b74098)
-
-Now your model should have most of its offsets fixed (some animations like ledge grabbing will still look like you're floating depending on the arm length)
-
-### Metal Texture screws up Romhacks
+### Metal Texture Leaking
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/c0032846-57f4-4c70-a2b4-66913f8c719a)
 
-Due to how the new Metal Texture works, it messes up with the romhack textures. to fix this, open `model.inc.c` file, then replace the code in the screenshot entirely with this:
+Due to how the new metal material works, it leaks into romhack materials if it isn't reverted correctly, this can be fixed by turning on `Fix Reverts` in **Fast64-Gart**, or by adding the reverts manually
 
 Original Code (At the VERY bottom!):
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/6cbc5b32-91cf-4f5d-b971-1df2a5f515c8)
 
 New Code:
 
-    Gfx mario_material_revert_render_settings[] = {
+    Gfx charname_material_revert_render_settings[] = {
       gsDPPipeSync(),
       gsSPSetGeometryMode(G_LIGHTING),
       gsSPClearGeometryMode(G_TEXTURE_GEN),
@@ -439,7 +437,7 @@ New Code:
       gsSPEndDisplayList(),
     };
 
-NOTE: Make sure you replace ``mario`` with the correct default character you're replacing.
+NOTE: Make sure you replace ``charname`` with the correct default character you're replacing.
 
 Default Characters:
 ``mario``
@@ -450,12 +448,11 @@ Default Characters:
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/3d3ff8a9-6e39-4b75-b565-588eecc4ac46)
 
-
 ## Miscellaneous
 Want some tips based on what we learned? No problem!
 
 ### Disable Tilt Torso
-Y'know how in BETA Mario's running animation his torso never tilts?
+You know how in Beta Mario's running animation his torso never tilts?
 
 ![image](https://github.com/coop-deluxe/character-template/assets/140215214/40d05041-4118-40bf-83ad-567b3d1ea925)
 
@@ -504,153 +501,39 @@ NOTE: As long as you have these vertex groups left alone, you SHOULD be fine onc
 ![4](https://github.com/coop-deluxe/character-template/assets/140215214/34d83929-fb24-48b1-a0a1-38694be7867e)
 
 ### Different Shades, Same Color
-Does your character have two shades of the same color but more recolor slots? Follow this:
+If you want a different shade of the same color slot, **do the following:**
 
-Make a material with the same color as the other. Set the 2nd Material to `Sm64 Decal`. Make an image with a transparent color of your choice (either white or black).
+**Step 1:** Create a new material with the shaded solid preset
 
-![Showcase](https://github.com/coop-deluxe/character-template/assets/140215214/9ffec240-c159-4fca-8fdd-608417fe86fa)
+**Step 2:** Open the combiner tab (if you can't see it, uncheck `Show Simplified UI`)
 
-Here's the result! They BOTH use the CAP color!
+**Step 3:** Change the combiner to the following:
+`A: Shade Color`      | `A Alpha: 0`
+`B: 0`                | `B Alpha: 0`
+`C: Primitive Color`  | `C Alpha: 0`
+`D: 0`                | `D Alpha: Environment Color Alpha`
 
-![image (9)](https://github.com/coop-deluxe/character-template/assets/140215214/2ead971e-edf7-40ea-b422-4900e572a7a9)
+**Step 4:** Lastly, set the shade color to the same color as the color slot and change the primitive color to give it a shade
 
-You can download the textures here:
-
-![25% White](https://github.com/coop-deluxe/character-template/assets/140215214/ea4e74a0-2262-4f82-a17e-1608f4e8da58)
-![Half Transparent White](https://github.com/coop-deluxe/character-template/assets/140215214/a43b0bea-2dda-4e8e-a912-9162f18604ed)
-![Transparent Black Half](https://github.com/coop-deluxe/character-template/assets/140215214/9382603a-8e51-412e-9de8-1adc8b0b88c6)
-![Transparent Black](https://github.com/coop-deluxe/character-template/assets/140215214/45cc4cad-a6f2-4557-b84f-f0915722c024)
+This can be used to create a darker shade of a color but still having the color change with the same slot as another color, or it can also be used to hue shift a color completely.
 
 ### Wings on Back
 Do you want to change where the wings are on your character? It's easier than you may think, check this out:
 
-**Step 1:** With your armature selected, go into `Pose Mode` and select the `Left/Right Wing` bones
+**Step 1:** With your armature selected, go into `Edit Mode` and select the `Left/Right Wing` bones with their children
 
-**Step 2:** Select each one individually and go into the `Item` tab
+**Step 2:** Move your wing bones to where you want them on the back
 
-**Step 3:** There will be locked locks beside the location fields, unlock them so you can move the wing bones
+**Step 3:** Go into `Edit Mode` and find select the wing bones
 
-**Step 4:** Move your wing bones to where you want them and apply as rest pose, make sure to lock the bones again
+**Step 4:** Select the torso last and hit `ctrl + p` and select `Keep Offset`
 
-**Step 5:** Go into `Edit Mode` and find the wing bones and once again select them individually
+**Step 5:** Find the `Capless Switch` bone and duplicate it, then repeat step 4 for it
 
-**Step 6:** Change both of their parents to the `Torso` bone
+**Step 6:** Create a new `displaylist` bone
 
-**Step 7:** Find the `Eye State Switch` bone and change its parent to the `1 C-Up Head Rotation` bone
+**Step 7:** Select it and select the new `Capless Switch` last and do `ctrl + p` and once again select `Keep Offset`
 
-**Step 8:** Find the `Capless Switch` bone and change its parent to the `Torso` bone, this is how the game handles the showing and hiding of wings on your head
-
-**Step 9:** Find the `Head` bone and change its parent to the `Capless Switch` bone
-
-Once you're done with that, the wings should be on Mario's back, but now the capless head is broken, so we need to fix it:
-
-**Step 1:** Select the `Capless Head` armature and go into `Edit Mode`
-
-**Step 2:** Create 3 new bones by hitting *Shift+A* 3 times
-
-**Step 3:** Rename the first one to `Capless Head Color`
-
-**Step 4:** Rename the second one to `0 Capless C-Up Head Rotation Function`
-
-**Step 5:** Rename the third one to `1 Capless C-Up Head Rotation`
-
-**Step 6:** Change the `0 Capless C-Up Head Rotation Function` and `1 Capless C-Up Head Rotation` bones' parents to `Capless Head Color` bone
-
-**Step 7:** Change the `Capless Head Color` bone's parent to the `Capless Head Switch Option` bone
-
-**Step 8:** Change the `Capless Head Eye State Switch` bone's parent to the `1 Capless C-Up Head Rotation`
-
-**Step 9:** Go into `Pose Mode` and do the change the following:
-
-  * For the `0 Capless C-Up Head Rotation Function` change the geolayout command to `Function` and the `Function` field to `802773a4`
-  * For the `1 Capless C-Up Head Rotation` change the geolayout command to `Rotate`
-
-And now you're done, now you have wings on your character's back with no issues.
-
-### Fixing Mirror Mario
-Since the vanilla game only handled culling for fully opaque materials in Mario's reflection, this breaks on models that use alpha clip or transparent materials. Let's fix that:
-
-**Step 1:** In your `geo.inc.c`, search for ``GEO_ASM(0, geo_mirror_mario_backface_culling),``, it should be near the bottom of the file.
-
-**Step 2:** Replace it with the following:
-
-    GEO_ASM(LAYER_OPAQUE << 2, geo_mirror_mario_backface_culling),
-    GEO_ASM(LAYER_ALPHA << 2, geo_mirror_mario_backface_culling),
-    GEO_ASM(LAYER_TRANSPARENT << 2, geo_mirror_mario_backface_culling),
-
-**Step 3:** Search for ``GEO_ASM(1, geo_mirror_mario_backface_culling),``, this should be one of the very last few lines in the geo.inc.c before the `material_revert_render_settings` displaylists.
-
-**Step 4:** Replace it with the following:
-
-    GEO_ASM((LAYER_OPAQUE << 2) | 1, geo_mirror_mario_backface_culling),
-    GEO_ASM((LAYER_ALPHA << 2) | 1, geo_mirror_mario_backface_culling),
-    GEO_ASM((LAYER_TRANSPARENT << 2) | 1, geo_mirror_mario_backface_culling),
-
-And now you're done, this should fix the backface culling in mirror reflections.
-
-### Fixing Vanish Cap Seeping (Fix found by SKL!)
-Do your models sometimes mess with the UI when you get the vanish cap? There's a relatively easy way to fix this, and it can also indirectly fix the metal cap romhack texture bug too!
-
-![image](https://github.com/user-attachments/assets/27fc4dec-74b5-41f4-8b1c-683bef614927)
-
-
-**NOTE: the bug only occurs in newer fast64 versions, so if you want a faster way to fix this for good, use older fast64 versions! This is for people using blender 4.0**
-
-**Step 1:** In your `geo.inc.c`, search for the second-to last ``GEO_CLOSE_NODE(),`` and replace it with:
-		``GEO_CLOSE_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, mario_material_revert_render_settings
-		),
-		GEO_DISPLAY_LIST(LAYER_ALPHA, mario_material_revert_render_settings),
-		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, 
-		mario_material_revert_render_settings)``
-
-  If in doubt, it should be just right under the last backface culling code!
-
-![image](https://github.com/user-attachments/assets/08f56ff6-9109-41c5-9aa6-a8318a0ad8e7)
-
-
-  **Step 2:** Now open `geo_header.h`, and paste this line at the very end: ``extern Gfx mario_material_revert_render_settings[];``
-
-![image](https://github.com/user-attachments/assets/e4b12c5a-54c5-4ee8-aae6-aca5e2eebce5)
-
-
-  **Step 3:** Almost there! Finally, open ``model.inc.c`` and at the end, paste:
-
-      Gfx mario_material_revert_render_settings[] = {
-      gsDPPipeSync(),
-      gsSPSetGeometryMode(G_LIGHTING),
-      gsSPClearGeometryMode(G_TEXTURE_GEN),
-      gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
-      gsSPTexture(65535, 65535, 0, 0, 0),
-      gsDPSetEnvColor(255, 255, 255, 255),
-      gsDPSetAlphaCompare(G_AC_NONE),
-
-      gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, 0),
-      gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-      gsDPLoadBlock(7, 0, 0, 1023, 256),
-      gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
-      gsDPSetTileSize(0, 0, 0, 124, 124),
-
-      gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, 0),
-      gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 0, 256, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-      gsDPLoadBlock(6, 0, 0, 1023, 256),
-      gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 256, 1, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
-      gsDPSetTileSize(1, 0, 0, 124, 124),
-
-      gsSPEndDisplayList(),
-    };
-
-NOTE: Make sure you replace ``mario`` with the correct default character you're replacing in EVERY ``material_revert_render_settings`` line!
-
-Default Characters:
-``mario``
-``luigi``
-``toad_player``
-``waluigi``
-``wario``
-
-![image](https://github.com/coop-deluxe/character-template/assets/140215214/3d3ff8a9-6e39-4b75-b565-588eecc4ac46)
-
-  **Step 4:** Delete any old geo_bin file, and enjoy a properly functional Vanish Cap!
+And now you're done, now you have wings on your character's back.
 
 ### Good luck!
