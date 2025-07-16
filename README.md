@@ -528,7 +528,7 @@ Do you want to change where the wings are on your character? It's easier than yo
 
 **Step 4:** Select the torso last and hit `ctrl + p` and select `Keep Offset`
 
-**Step 5:** Find the `Capless Switch` bone and duplicate it, then repeat step 4 for it
+**Step 5:** Find the `Capless Switch` bone and duplicate it, set its Geolayout command to Geo ASM in pose mode, then repeat step 4 for it
 
 **Step 6:** Create a new `displaylist` bone
 
