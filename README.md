@@ -524,15 +524,11 @@ Do you want to change where the wings are on your character? It's easier than yo
 
 **Step 2:** Move your wing bones to where you want them on the back
 
-**Step 3:** Go into `Edit Mode` and find select the wing bones
+**Step 3:** Go into `Edit Mode` and select the wing bones
 
 **Step 4:** Select the torso last and hit `ctrl + p` and select `Keep Offset`
 
-**Step 5:** Find the `Capless Switch` bone and duplicate it, set its Geolayout command to Geo ASM in pose mode, then repeat step 4 for it
-
-**Step 6:** Create a new `displaylist` bone
-
-**Step 7:** Select it and select the new `Capless Switch` last and do `ctrl + p` and once again select `Keep Offset`
+**Step 5:** Find the `Capless Switch` bone and duplicate it, and set its Geolayout command to Geo ASM (`function`) in pose mode, then repeat step 4 for it
 
 And now you're done, now you have wings on your character's back.
 
