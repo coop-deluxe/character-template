@@ -1,7 +1,7 @@
 # Character Templates for Coop Deluxe
 These are character templates made for player characters that appear in **Super Mario 64 Deluxe**. It adds many QOL features that make editing your models easier.
 
-*We recommended using Blender v3.6*
+*Confirmed working on Blender v4.2.20.*
 
 *Fast64 is required for this `.blend` file. We recommend you download one of these 2 forks:*
 
