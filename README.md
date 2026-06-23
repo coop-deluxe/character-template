@@ -403,11 +403,15 @@ If your character is floating or sinking through the floor due to being too shor
 Note that `n` is the length of your character's legs, find it by measuring the distance from the thigh to the shoe in the armature, if it's negative then just make it positive
 
 <img width="579" height="444" alt="image" src="https://github.com/user-attachments/assets/e2659ba1-3433-4d5e-a3e5-95cd2b4e4f4a" />
-
+<img width="244" height="69" alt="image" src="https://github.com/user-attachments/assets/dae089fc-9be7-4301-9cbe-6095c2c4b9ac" />
+<img width="671" height="608" alt="image" src="https://github.com/user-attachments/assets/72a755c2-e0e8-4275-92ec-110d96b88cdd" />
 
 **Step 4:** Lastly, change the new scale bone's value to the following:
 `0.25 / ((n*0.25)/1.55997)`
 Once again `n` is the length of your character's legs, the same as above
+
+<img width="272" height="71" alt="image" src="https://github.com/user-attachments/assets/73bf39c0-9196-496e-bbc2-894dfcb33cf6" />
+<img width="669" height="419" alt="image" src="https://github.com/user-attachments/assets/147bd6fb-74ef-490d-a528-04d130b3e244" />
 
 ### Metal Texture Leaking
 
