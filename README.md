@@ -392,11 +392,18 @@ If your character is floating or sinking through the floor due to being too shor
 
 **Step 1:** Create a scale bone in your armature that is a child of the root bone which should be the first offset bone
 
+<img width="647" height="258" alt="image" src="https://github.com/user-attachments/assets/9fac6dd1-3989-401f-b572-515df74a9765" />
+
 **Step 2:** Find the `Scale` bone in your armature and go into its bone properties
+
+<img width="670" height="675" alt="image" src="https://github.com/user-attachments/assets/9e01279e-f472-4640-810a-e0fc8872750f" />
 
 **Step 3:** Find the scale value (by default it should be 0.25) and change it depending to the following:
 `(n*0.25)/1.55997`
 Note that `n` is the length of your character's legs, find it by measuring the distance from the thigh to the shoe in the armature, if it's negative then just make it positive
+
+<img width="579" height="444" alt="image" src="https://github.com/user-attachments/assets/e2659ba1-3433-4d5e-a3e5-95cd2b4e4f4a" />
+
 
 **Step 4:** Lastly, change the new scale bone's value to the following:
 `0.25 / ((n*0.25)/1.55997)`
